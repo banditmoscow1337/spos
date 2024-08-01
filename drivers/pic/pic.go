@@ -1,6 +1,6 @@
 package pic
 
-import "github.com/icexin/eggos/kernel/sys"
+import "github.com/banditmoscow1337/spos/kernel/sys"
 
 const (
 	PIC1_CMD  = 0x20

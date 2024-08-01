@@ -8,8 +8,8 @@ import (
 	"github.com/icexin/eggos/inet/dhcp"
 	"github.com/icexin/eggos/log"
 
-	"gvisor.dev/gvisor/pkg/tcpip"
-	"gvisor.dev/gvisor/pkg/tcpip/header"
+	"github.com/icexin/eggos/gvisor/tcpip"
+	"github.com/icexin/eggos/gvisor/tcpip/header"
 	"gvisor.dev/gvisor/pkg/tcpip/link/loopback"
 	"gvisor.dev/gvisor/pkg/tcpip/network/arp"
 	"gvisor.dev/gvisor/pkg/tcpip/network/ipv4"
@@ -27,7 +27,7 @@ var (
 	nstack *stack.Stack
 )
 
-func e(err tcpip.Error) error {
+func e(err Error) error {
 	if err == nil {
 		return nil
 	}

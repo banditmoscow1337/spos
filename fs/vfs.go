@@ -8,10 +8,10 @@ import (
 	"syscall"
 	"unsafe"
 
-	"github.com/icexin/eggos/console"
-	"github.com/icexin/eggos/fs/mount"
-	"github.com/icexin/eggos/kernel/isyscall"
-	"github.com/icexin/eggos/kernel/sys"
+	"github.com/banditmoscow1337/spos/console"
+	"github.com/banditmoscow1337/spos/fs/mount"
+	"github.com/banditmoscow1337/spos/kernel/isyscall"
+	"github.com/banditmoscow1337/spos/kernel/sys"
 
 	"github.com/spf13/afero"
 )
@@ -218,7 +218,7 @@ func sysUname(c *isyscall.Request) {
 	copy(unsafebuf(&buf.Domainname), "icexin.com")
 	copy(unsafebuf(&buf.Nodename), "icexin.local")
 	copy(unsafebuf(&buf.Release), "0")
-	copy(unsafebuf(&buf.Sysname), "eggos")
+	copy(unsafebuf(&buf.Sysname), "spos")
 	copy(unsafebuf(&buf.Version), "0")
 	c.SetRet(0)
 

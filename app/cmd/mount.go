@@ -4,10 +4,10 @@ import (
 	"errors"
 	"net/url"
 
-	"github.com/icexin/eggos/app"
-	"github.com/icexin/eggos/fs"
-	"github.com/icexin/eggos/fs/smb"
-	"github.com/icexin/eggos/fs/stripprefix"
+	"github.com/banditmoscow1337/spos/app"
+	"github.com/banditmoscow1337/spos/fs"
+	"github.com/banditmoscow1337/spos/fs/smb"
+	"github.com/banditmoscow1337/spos/fs/stripprefix"
 )
 
 func mountmain(ctx *app.Context) error {

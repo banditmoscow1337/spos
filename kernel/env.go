@@ -3,9 +3,9 @@ package kernel
 import (
 	"unsafe"
 
-	"github.com/icexin/eggos/drivers/multiboot"
-	"github.com/icexin/eggos/kernel/sys"
-	"gvisor.dev/gvisor/pkg/abi/linux"
+	"github.com/banditmoscow1337/spos/drivers/multiboot"
+	"github.com/banditmoscow1337/spos/gvisor/linux"
+	"github.com/banditmoscow1337/spos/kernel/sys"
 )
 
 //go:nosplit
@@ -21,6 +21,7 @@ func envput(pbuf *[]byte, v uintptr) uintptr {
 }
 
 // envptr used to alloc an *uintptr
+//
 //go:nosplit
 func envptr(pbuf *[]byte) *uintptr {
 	return (*uintptr)(unsafe.Pointer(envput(pbuf, 0)))
@@ -57,7 +58,7 @@ func prepareArgs(sp uintptr) {
 	envput(&buf, linux.AT_NULL)
 	envput(&buf, 0)
 
-	*arg0 = envdup(&buf, "eggos\x00")
+	*arg0 = envdup(&buf, "spos\x00")
 	*envTerm = envdup(&buf, "TERM=xterm\x00")
 	*envGoDebug = envdup(&buf, "GODEBUG=asyncpreemptoff=1\x00")
 }

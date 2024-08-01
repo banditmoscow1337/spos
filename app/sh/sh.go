@@ -5,13 +5,13 @@ import (
 	"log"
 	"strings"
 
-	"github.com/icexin/eggos/app"
-	"github.com/icexin/eggos/console"
+	"github.com/banditmoscow1337/spos/app"
+	"github.com/banditmoscow1337/spos/console"
 
 	"github.com/mattn/go-shellwords"
 )
 
-const prompt = "root@eggos# "
+const prompt = "root@spos# "
 
 func main(ctx *app.Context) error {
 	r := ctx.LineReader()

@@ -6,7 +6,7 @@ import (
 	"os"
 	"text/tabwriter"
 
-	"github.com/icexin/eggos/app"
+	"github.com/banditmoscow1337/spos/app"
 )
 
 func printfiles(w io.Writer, files ...os.FileInfo) {

@@ -14,7 +14,7 @@ Basic initialization actions are performed in our own entry function, such as `g
 :------------------------------------------: 1GB
 | ........                                 |
 :------------------------------------------: memtop(256MB or more)
-| Physical memory(managed by eggos kernel) |
+| Physical memory(managed by spos kernel) |
 :------------------------------------------: 20MB
 | Kernel image                             |
 :------------------------------------------: 1MB

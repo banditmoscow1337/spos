@@ -5,11 +5,11 @@ import (
 
 	"github.com/icexin/eggos/kernel/isyscall"
 
-	"gvisor.dev/gvisor/pkg/tcpip"
-	"gvisor.dev/gvisor/pkg/tcpip/network/ipv4"
+	"github.com/icexin/eggos/gvisor/tcpip"
+	"github.com/icexin/eggos/gvisor/tcpip/network/ipv4"
+	"github.com/icexin/eggos/gvisor/waiter"
 	"gvisor.dev/gvisor/pkg/tcpip/transport/tcp"
 	"gvisor.dev/gvisor/pkg/tcpip/transport/udp"
-	"gvisor.dev/gvisor/pkg/waiter"
 )
 
 func sysSocket(c *isyscall.Request) {

@@ -5,9 +5,9 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/icexin/eggos/console"
-	"github.com/icexin/eggos/drivers/uart"
-	"github.com/icexin/eggos/kernel/sys"
+	"github.com/banditmoscow1337/spos/console"
+	"github.com/banditmoscow1337/spos/drivers/uart"
+	"github.com/banditmoscow1337/spos/kernel/sys"
 )
 
 type LogLevel int8
@@ -21,7 +21,7 @@ const (
 )
 
 const (
-	loglvlEnv      = "EGGOS_LOGLVL"
+	loglvlEnv      = "spos_LOGLVL"
 	loglvlEnvDebug = "debug"
 	loglvlEnvInfo  = "info"
 	loglvlEnvWarn  = "warn"
@@ -38,7 +38,7 @@ var (
 )
 
 func init() {
-	lvl := os.Getenv("EGGOS_LOGLVL")
+	lvl := os.Getenv("spos_LOGLVL")
 	switch lvl {
 	case loglvlEnvDebug:
 		Level = LoglvlDebug

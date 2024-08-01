@@ -4,7 +4,7 @@
 
 ### What version of go does this project require?
 
-This project requires anything within the `go 1.16.x` range of versions. Anything newer simply wont work, see: [issue 92](https://github.com/icexin/eggos/issues/92)
+This project requires anything within the `go 1.16.x` range of versions. Anything newer simply wont work, see: [issue 92](https://github.com/banditmoscow1337/spos/issues/92)
 
 
 ### Does this mean I have to downgrade go?

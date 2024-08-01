@@ -12,17 +12,17 @@ import (
 )
 
 const (
-	eggosModulePath = "github.com/icexin/eggos"
-	eggosImportFile = "import_eggos.go"
-	overlayFile     = "overlay.json"
+	sposModulePath = "github.com/banditmoscow1337/spos"
+	sposImportFile = "import_spos.go"
+	overlayFile    = "overlay.json"
 )
 
 var (
-	eggosImportTpl = template.Must(template.New("eggos").Parse(`
-	//+build eggos
+	sposImportTpl = template.Must(template.New("spos").Parse(`
+	//+build spos
 
 	package {{.name}}
-	import _ "github.com/icexin/eggos"
+	import _ "github.com/banditmoscow1337/spos"
 	`))
 )
 
@@ -44,8 +44,8 @@ type buildOverlay struct {
 	Replace map[string]string
 }
 
-func (b *Builder) eggosImportFile() string {
-	return filepath.Join(b.basedir, eggosImportFile)
+func (b *Builder) sposImportFile() string {
+	return filepath.Join(b.basedir, sposImportFile)
 }
 
 func (b *Builder) overlayFile() string {
@@ -55,20 +55,20 @@ func (b *Builder) overlayFile() string {
 func (b *Builder) buildPrepare() error {
 	var err error
 
-	if !b.modHasEggos() {
-		log.Printf("eggos not found in go.mod")
+	if !b.modHasspos() {
+		log.Printf("spos not found in go.mod")
 		err = b.editGoMod()
 		if err != nil {
 			return err
 		}
 	}
 
-	err = b.writeImportFile(b.eggosImportFile())
+	err = b.writeImportFile(b.sposImportFile())
 	if err != nil {
 		return err
 	}
 
-	err = writeOverlayFile(b.overlayFile(), eggosImportFile, b.eggosImportFile())
+	err = writeOverlayFile(b.overlayFile(), sposImportFile, b.sposImportFile())
 	if err != nil {
 		return err
 	}
@@ -101,8 +101,8 @@ func (b *Builder) readGomodule() (*gomodule, error) {
 	return &mod, nil
 }
 
-func (b *Builder) modHasEggos() bool {
-	if b.currentModulePath() == eggosModulePath {
+func (b *Builder) modHasspos() bool {
+	if b.currentModulePath() == sposModulePath {
 		return true
 	}
 
@@ -111,7 +111,7 @@ func (b *Builder) modHasEggos() bool {
 		panic(err)
 	}
 	for _, mod := range mods.Require {
-		if mod.Path == eggosModulePath {
+		if mod.Path == sposModulePath {
 			return true
 		}
 	}
@@ -119,9 +119,9 @@ func (b *Builder) modHasEggos() bool {
 }
 
 func (b *Builder) editGoMod() error {
-	getPath := eggosModulePath
-	if b.cfg.EggosVersion != "" {
-		getPath = getPath + "@" + b.cfg.EggosVersion
+	getPath := sposModulePath
+	if b.cfg.SposVersion != "" {
+		getPath = getPath + "@" + b.cfg.SposVersion
 	}
 	log.Printf("go get %s", getPath)
 	env := []string{
@@ -156,7 +156,7 @@ func (b *Builder) currentModulePath() string {
 func (b *Builder) writeImportFile(fname string) error {
 	pkgname := b.currentPkgName()
 	var rawFile bytes.Buffer
-	err := eggosImportTpl.Execute(&rawFile, map[string]interface{}{
+	err := sposImportTpl.Execute(&rawFile, map[string]interface{}{
 		"name": pkgname,
 	})
 	if err != nil {

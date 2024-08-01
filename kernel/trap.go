@@ -3,11 +3,11 @@ package kernel
 import (
 	"unsafe"
 
-	"github.com/icexin/eggos/drivers/pic"
-	"github.com/icexin/eggos/kernel/isyscall"
-	"github.com/icexin/eggos/kernel/sys"
-	"github.com/icexin/eggos/kernel/trap"
-	"github.com/icexin/eggos/log"
+	"github.com/banditmoscow1337/spos/drivers/pic"
+	"github.com/banditmoscow1337/spos/kernel/isyscall"
+	"github.com/banditmoscow1337/spos/kernel/sys"
+	"github.com/banditmoscow1337/spos/kernel/trap"
+	"github.com/banditmoscow1337/spos/log"
 )
 
 var (
@@ -124,6 +124,7 @@ func preparePanic(tf *trapFrame) {
 
 // ChangeReturnPC change the return pc of a trap
 // must be called in trap handler
+//
 //go:nosplit
 func changeReturnPC(tf *trapFrame, pc uintptr) {
 	// tf.Err, tf.IP, tf.CS, tf.FLAGS = pc, tf.CS, tf.FLAGS, tf.IP

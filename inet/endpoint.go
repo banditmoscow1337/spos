@@ -3,9 +3,9 @@ package inet
 import (
 	"sync"
 
-	"gvisor.dev/gvisor/pkg/tcpip"
-	"gvisor.dev/gvisor/pkg/tcpip/buffer"
-	"gvisor.dev/gvisor/pkg/tcpip/header"
+	"github.com/icexin/eggos/gvisor/buffer"
+	"github.com/icexin/eggos/gvisor/tcpip"
+	"github.com/icexin/eggos/gvisor/tcpip/header"
 	"gvisor.dev/gvisor/pkg/tcpip/link/ethernet"
 	"gvisor.dev/gvisor/pkg/tcpip/stack"
 )

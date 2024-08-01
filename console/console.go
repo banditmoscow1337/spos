@@ -6,9 +6,9 @@ import (
 	"syscall"
 	"unsafe"
 
-	"github.com/icexin/eggos/drivers/cga"
-	"github.com/icexin/eggos/drivers/kbd"
-	"github.com/icexin/eggos/drivers/uart"
+	"github.com/banditmoscow1337/spos/drivers/cga"
+	"github.com/banditmoscow1337/spos/drivers/kbd"
+	"github.com/banditmoscow1337/spos/drivers/uart"
 )
 
 const (

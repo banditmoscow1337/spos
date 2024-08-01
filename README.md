@@ -1,8 +1,8 @@
 <h1 align="center">
-    <img src="./assets/files/eggos.png" />
+    <img src="./assets/files/spos.png" />
 </h1>
 
-![CI](https://github.com/icexin/eggos/workflows/CI/badge.svg)
+![CI](https://github.com/banditmoscow1337/spos/workflows/CI/badge.svg)
 
 [中文说明](README_CN.md)
 
@@ -76,13 +76,13 @@ $ mage qemu
 
 # Build your own unikernel
 
-eggos has the ability to convert normal go program into an `ELF unikernel` which can be running on bare metal.
+spos has the ability to convert normal go program into an `ELF unikernel` which can be running on bare metal.
 
-First, get the `egg` binary, which can be accessed through https://github.com/icexin/eggos/releases, or directly through `go install github.com/icexin/eggos/cmd/egg`
+First, get the `egg` binary, which can be accessed through https://github.com/banditmoscow1337/spos/releases, or directly through `go install github.com/banditmoscow1337/spos/cmd/egg`
 
 Run `egg build -o kernel.elf` in your project directory to get the kernel file, and then run `egg run kernel.elf` to start the qemu virtual machine to run the kernel.
 
-`egg pack -o eggos.iso -k kernel.elf` can pack the kernel into an iso file, and then you can use https://github.com/ventoy/Ventoy to run the iso file on a bare metal.
+`egg pack -o spos.iso -k kernel.elf` can pack the kernel into an iso file, and then you can use https://github.com/ventoy/Ventoy to run the iso file on a bare metal.
 
 Here are some examples [examples](./app/examples)
 
@@ -108,7 +108,7 @@ Go provides simple support for gdb, see [Debugging Go Code with GDB](https://gol
 
 # Running on bare metal
 
-If you want eggos to run on bare metal, it is recommended to use grub as the bootloader.
+If you want spos to run on bare metal, it is recommended to use grub as the bootloader.
 
 The multiboot.elf generated after executing the make command is a kernel image conforming to the multiboot specification, which can be directly recognized by grub and booted on a bare metal. The sample configuration file refer to `boot/grub.cfg`
 

@@ -4,10 +4,10 @@ import (
 	"syscall"
 	"unsafe"
 
-	"github.com/icexin/eggos/kernel/isyscall"
-	"github.com/icexin/eggos/kernel/mm"
-	"gvisor.dev/gvisor/pkg/abi/linux"
-	"gvisor.dev/gvisor/pkg/abi/linux/errno"
+	"github.com/banditmoscow1337/spos/gvisor/linux"
+	"github.com/banditmoscow1337/spos/gvisor/linux/errno"
+	"github.com/banditmoscow1337/spos/kernel/isyscall"
+	"github.com/banditmoscow1337/spos/kernel/mm"
 )
 
 const (

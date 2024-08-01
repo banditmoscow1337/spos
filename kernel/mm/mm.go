@@ -3,8 +3,8 @@ package mm
 import (
 	"unsafe"
 
-	"github.com/icexin/eggos/drivers/multiboot"
-	"github.com/icexin/eggos/kernel/sys"
+	"github.com/banditmoscow1337/spos/drivers/multiboot"
+	"github.com/banditmoscow1337/spos/kernel/sys"
 )
 
 const (
@@ -36,7 +36,7 @@ func pageEnable()
 //go:nosplit
 func lcr3(topPage *entryPage)
 
-//go:linkname throw github.com/icexin/eggos/kernel.throw
+//go:linkname throw github.com/banditmoscow1337/spos/kernel.throw
 func throw(msg string)
 
 //go:nosplit

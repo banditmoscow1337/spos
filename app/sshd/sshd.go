@@ -6,8 +6,8 @@ package sshd
 import (
 	"net"
 
+	"github.com/banditmoscow1337/spos/app"
 	"github.com/gliderlabs/ssh"
-	"github.com/icexin/eggos/app"
 )
 
 var rsaContent = `

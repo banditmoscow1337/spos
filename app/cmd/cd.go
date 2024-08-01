@@ -3,7 +3,7 @@ package cmd
 import (
 	"errors"
 
-	"github.com/icexin/eggos/app"
+	"github.com/banditmoscow1337/spos/app"
 )
 
 func cdmain(ctx *app.Context) error {

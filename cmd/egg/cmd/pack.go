@@ -5,7 +5,7 @@ Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
 You may obtain a copy of the License at
 
-    http://www.apache.org/licenses/LICENSE-2.0
+	http://www.apache.org/licenses/LICENSE-2.0
 
 Unless required by applicable law or agreed to in writing, software
 distributed under the License is distributed on an "AS IS" BASIS,
@@ -25,8 +25,8 @@ import (
 	"os/exec"
 	"path/filepath"
 
-	"github.com/icexin/eggos/cmd/egg/assets"
-	"github.com/icexin/eggos/cmd/egg/build"
+	"github.com/banditmoscow1337/spos/cmd/egg/assets"
+	"github.com/banditmoscow1337/spos/cmd/egg/build"
 	"github.com/spf13/cobra"
 )
 
@@ -56,7 +56,7 @@ var packCmd = &cobra.Command{
 }
 
 func runPackage() error {
-	base, err := ioutil.TempDir("", "eggos-package")
+	base, err := ioutil.TempDir("", "spos-package")
 	if err != nil {
 		return err
 	}
@@ -91,14 +91,14 @@ func runPackage() error {
 		return err
 	}
 
-	tmpOutFile := filepath.Join(base, "eggos.iso")
+	tmpOutFile := filepath.Join(base, "spos.iso")
 	err = mkiso(tmpOutFile, isoBase, base)
 	if err != nil {
 		return err
 	}
 
 	if packOutFile == "" {
-		packOutFile = "eggos.iso"
+		packOutFile = "spos.iso"
 	}
 	return copyfile(packOutFile, tmpOutFile)
 }
@@ -224,7 +224,7 @@ func init() {
 
 	packCmd.Flags().StringVarP(&packFormat, "format", "f", "iso", "package format, values `iso`")
 	packCmd.Flags().StringVarP(&packKernelFile, "kernel", "k", "", "the kernel file, if empty current package will be built as kernel")
-	packCmd.Flags().StringVarP(&packOutFile, "output", "o", "eggos.iso", "file name of output")
+	packCmd.Flags().StringVarP(&packOutFile, "output", "o", "spos.iso", "file name of output")
 	packCmd.Flags().BoolVar(&keepTmpdir, "keep-tmp", false, "keep temp dir, for debugging")
 	packCmd.Flags().BoolVarP(&withoutDocker, "without-docker", "d", false, "using docker for grub tools")
 }

@@ -3,9 +3,9 @@ package cga
 import (
 	"unsafe"
 
-	"github.com/icexin/eggos/drivers/cga/fbcga"
-	"github.com/icexin/eggos/drivers/vbe"
-	"github.com/icexin/eggos/kernel/sys"
+	"github.com/banditmoscow1337/spos/drivers/cga/fbcga"
+	"github.com/banditmoscow1337/spos/drivers/vbe"
+	"github.com/banditmoscow1337/spos/kernel/sys"
 )
 
 type Backend interface {

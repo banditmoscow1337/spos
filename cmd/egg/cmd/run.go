@@ -5,7 +5,7 @@ Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
 You may obtain a copy of the License at
 
-    http://www.apache.org/licenses/LICENSE-2.0
+	http://www.apache.org/licenses/LICENSE-2.0
 
 Unless required by applicable law or agreed to in writing, software
 distributed under the License is distributed on an "AS IS" BASIS,
@@ -24,9 +24,9 @@ import (
 	"path/filepath"
 	"strings"
 
+	"github.com/banditmoscow1337/spos/cmd/egg/assets"
+	"github.com/banditmoscow1337/spos/cmd/egg/build"
 	"github.com/google/shlex"
-	"github.com/icexin/eggos/cmd/egg/assets"
-	"github.com/icexin/eggos/cmd/egg/build"
 	"github.com/spf13/cobra"
 )
 
@@ -41,7 +41,7 @@ var (
 // runCmd represents the run command
 var runCmd = &cobra.Command{
 	Use:   "run <kernel>",
-	Short: "run running a eggos kernel in qemu",
+	Short: "run running a spos kernel in qemu",
 	Run: func(cmd *cobra.Command, args []string) {
 		err := runKernel(args)
 		if err != nil {
@@ -51,7 +51,7 @@ var runCmd = &cobra.Command{
 }
 
 func runKernel(args []string) error {
-	base, err := ioutil.TempDir("", "eggos-run")
+	base, err := ioutil.TempDir("", "spos-run")
 	if err != nil {
 		return err
 	}
@@ -63,10 +63,10 @@ func runKernel(args []string) error {
 		kernelFile = filepath.Join(base, "kernel.elf")
 
 		b := build.NewBuilder(build.Config{
-			GoRoot:       goroot,
-			Basedir:      base,
-			BuildTest:    false,
-			EggosVersion: eggosVersion,
+			GoRoot:      goroot,
+			Basedir:     base,
+			BuildTest:   false,
+			SposVersion: sposVersion,
 			GoArgs: []string{
 				"-o", kernelFile,
 			},

@@ -27,7 +27,6 @@ var (
 )
 
 var (
-	GOTAGS    = "nes phy prometheus"
 	GOGCFLAGS = ""
 )
 
@@ -48,14 +47,13 @@ const (
 	maxGoMinorVersionSupported = 16
 )
 
-// Kernel target build the elf kernel for eggos, generate kernel.elf
+// Kernel target build the elf kernel for spos, generate kernel.elf
 func Kernel() error {
 	mg.Deps(Egg)
 
 	detectGoVersion()
 	return rundir("app", nil, eggBin, "build", "-o", "../kernel.elf",
 		"-gcflags", GOGCFLAGS,
-		"-tags", GOTAGS,
 		"./kmain")
 }
 
@@ -125,27 +123,27 @@ func QemuDebug() error {
 	return eggrun(QEMU_DEBUG_OPT, "kernel.elf")
 }
 
-// Iso generate eggos.iso, which can be used with qemu -cdrom option.
+// Iso generate spos.iso, which can be used with qemu -cdrom option.
 func Iso() error {
 	mg.Deps(Kernel)
-	return sh.RunV(eggBin, "pack", "-o", "eggos.iso", "-k", "kernel.elf")
+	return sh.RunV(eggBin, "pack", "-o", "spos.iso", "-k", "kernel.elf")
 }
 
-// Graphic run eggos.iso on qemu, which vbe is enabled.
+// Graphic run spos.iso on qemu, which vbe is enabled.
 func Graphic() error {
 	detectQemu()
 
 	mg.Deps(Iso)
-	return eggrun(QEMU_OPT, "eggos.iso")
+	return eggrun(QEMU_OPT, "spos.iso")
 }
 
-// GraphicDebug run eggos.iso on qemu in debug mode.
+// GraphicDebug run spos.iso on qemu in debug mode.
 func GraphicDebug() error {
 	detectQemu()
 
 	GOGCFLAGS += " -N -l"
 	mg.Deps(Iso)
-	return eggrun(QEMU_DEBUG_OPT, "eggos.iso")
+	return eggrun(QEMU_DEBUG_OPT, "spos.iso")
 }
 
 func Egg() error {
@@ -164,7 +162,7 @@ func Clean() {
 	rmGlob("multiboot.elf")
 	rmGlob("qemu.log")
 	rmGlob("qemu.pcap")
-	rmGlob("eggos.iso")
+	rmGlob("spos.iso")
 	rmGlob("egg")
 	rmGlob("boot64.elf")
 	rmGlob("bochs.log")
@@ -228,7 +226,7 @@ func detectGoVersion() {
 }
 
 func gobin() string {
-	goroot := os.Getenv("EGGOS_GOROOT")
+	goroot := os.Getenv("spos_GOROOT")
 	if goroot != "" {
 		return filepath.Join(goroot, "bin", "go")
 	}

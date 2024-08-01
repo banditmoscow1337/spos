@@ -3,8 +3,8 @@ package kernel
 import (
 	"unsafe"
 
-	"github.com/icexin/eggos/kernel/mm"
-	"github.com/icexin/eggos/kernel/sys"
+	"github.com/banditmoscow1337/spos/kernel/mm"
+	"github.com/banditmoscow1337/spos/kernel/sys"
 )
 
 const (
@@ -190,6 +190,7 @@ func ksysClone(pc, stack, flags uintptr) uintptr
 func ksysYield()
 
 // thread0 is the first thread
+//
 //go:nosplit
 func thread0() {
 	// jump to go rt0
@@ -284,6 +285,7 @@ func schedule() {
 }
 
 // pickup selects the next runnable thread
+//
 //go:nosplit
 func pickup(pidx *int) *Thread {
 	curr := *pidx
@@ -314,6 +316,7 @@ func pickup(pidx *int) *Thread {
 }
 
 // switchto switch thread context from scheduler to t
+//
 //go:nosplit
 func switchto(t *Thread) {
 	begin := nanosecond()

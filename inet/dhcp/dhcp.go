@@ -11,7 +11,7 @@ import (
 	"fmt"
 	"time"
 
-	"gvisor.dev/gvisor/pkg/tcpip"
+	"github.com/icexin/eggos/gvisor/tcpip"
 )
 
 // Config is standard DHCP configuration.

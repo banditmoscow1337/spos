@@ -3,7 +3,7 @@ package mm
 import (
 	"unsafe"
 
-	"github.com/icexin/eggos/kernel/sys"
+	"github.com/banditmoscow1337/spos/kernel/sys"
 )
 
 //go:notinheap
@@ -12,6 +12,7 @@ type memblk struct {
 }
 
 // Pool used to manage fixed size memory block
+//
 //go:notinheap
 type Pool struct {
 	size uintptr
@@ -19,6 +20,7 @@ type Pool struct {
 }
 
 // size will align ptr size
+//
 //go:nosplit
 func PoolInit(p *Pool, size uintptr) {
 	const align = sys.PtrSize - 1

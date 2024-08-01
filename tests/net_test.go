@@ -5,7 +5,7 @@ import (
 	"net/http"
 	"testing"
 
-	_ "github.com/icexin/eggos"
+	_ "github.com/banditmoscow1337/spos"
 )
 
 func TestHTTP(t *testing.T) {

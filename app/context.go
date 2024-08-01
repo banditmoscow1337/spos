@@ -5,8 +5,8 @@ import (
 	"fmt"
 	"io"
 
-	"github.com/icexin/eggos/fs"
-	"github.com/icexin/eggos/fs/chdir"
+	"github.com/banditmoscow1337/spos/fs"
+	"github.com/banditmoscow1337/spos/fs/chdir"
 	"github.com/peterh/liner"
 )
 

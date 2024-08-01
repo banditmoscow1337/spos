@@ -3,7 +3,7 @@ package log_test
 import (
 	"testing"
 
-	"github.com/icexin/eggos/log"
+	"github.com/banditmoscow1337/spos/log"
 )
 
 func ExampleSetLogLevel() {

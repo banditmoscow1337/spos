@@ -5,7 +5,7 @@ Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
 You may obtain a copy of the License at
 
-    http://www.apache.org/licenses/LICENSE-2.0
+	http://www.apache.org/licenses/LICENSE-2.0
 
 Unless required by applicable law or agreed to in writing, software
 distributed under the License is distributed on an "AS IS" BASIS,
@@ -18,7 +18,7 @@ package cmd
 import (
 	"log"
 
-	"github.com/icexin/eggos/cmd/egg/build"
+	"github.com/banditmoscow1337/spos/cmd/egg/build"
 	"github.com/spf13/cobra"
 )
 
@@ -41,9 +41,9 @@ var buildCmd = &cobra.Command{
 
 func runBuild(args []string) error {
 	b := build.NewBuilder(build.Config{
-		GoRoot:       goroot,
-		EggosVersion: eggosVersion,
-		GoArgs:       args,
+		GoRoot:      goroot,
+		SposVersion: sposVersion,
+		GoArgs:      args,
 	})
 	err := b.Build()
 	if err != nil {

@@ -1,14 +1,14 @@
 <h1 align="center">
-    <img src="./assets/files/eggos.png" />
+    <img src="./assets/files/spos.png" />
 </h1
 
-![CI](https://github.com/icexin/eggos/workflows/CI/badge.svg)
+![CI](https://github.com/banditmoscow1337/spos/workflows/CI/badge.svg)
 
 使用Go语言编写的运行在x86裸机上的unikernel
 
 将Go程序运行在x86裸机上，全部使用Go语言编写(bootloader里面有少量汇编和c)，支持大部分Go的核心功能(GC，goroutine等)，包括大部分Go的标准库，同时也附带一个网络协议栈，从而能运行大部分基于`net`库的第三方库。
 
-不同于传统的操作系统内核，eggos没有对用户态和内核态的代码进行隔离，整个unikernel运行在一个地址空间上。没有进程的概念以及进程间通信，但是完整支持了Go的goroutine和channel。另外也没有传统的ELF加载器，但是附带了一个Javascript的解释器。
+不同于传统的操作系统内核，spos没有对用户态和内核态的代码进行隔离，整个unikernel运行在一个地址空间上。没有进程的概念以及进程间通信，但是完整支持了Go的goroutine和channel。另外也没有传统的ELF加载器，但是附带了一个Javascript的解释器。
 
 
 # 背景
@@ -74,14 +74,14 @@ $ mage qemu
 
 # 构建自己的unikernel
 
-`eggos` 有将普通Go程序转换成运行于裸机上的 `ELF unikernel` 的能力。
+`spos` 有将普通Go程序转换成运行于裸机上的 `ELF unikernel` 的能力。
 
-首先获取egg二进制，可以通过 https://github.com/icexin/eggos/releases 下载。也可以直接运行`go install github.com/icexin/eggos/cmd/egg`获取。
+首先获取egg二进制，可以通过 https://github.com/banditmoscow1337/spos/releases 下载。也可以直接运行`go install github.com/banditmoscow1337/spos/cmd/egg`获取。
 
 在你的项目目录运行`egg build -o kernel.elf`，接着运行`egg run kernel.elf`启动qemu虚拟机。
 
 
-`egg pack -o eggos.iso -k kernel.elf` 可以将内核打包成一个iso文件，通过 https://github.com/ventoy/Ventoy 即可运行在真实的机器上。
+`egg pack -o spos.iso -k kernel.elf` 可以将内核打包成一个iso文件，通过 https://github.com/ventoy/Ventoy 即可运行在真实的机器上。
 
 这里是一些例子[例子](./app/examples)
 
@@ -89,7 +89,7 @@ Happy hacking!
 
 # Debug
 
-eggos支持直接使用GDB debug，或者使用vscode这样带图形界面的IDE来debug。
+spos支持直接使用GDB debug，或者使用vscode这样带图形界面的IDE来debug。
 
 mac用户使用如下命令安装GDB
 
@@ -122,7 +122,7 @@ vscode用户通过安装`Native Debug` 扩展来支持GDB。
 
 # 关于贡献
 
-eggos在活跃开发中，你将会遇到很多bug，包括不限于panic或者死机。如果你想贡献eggos，欢迎提交PR，谢谢！
+spos在活跃开发中，你将会遇到很多bug，包括不限于panic或者死机。如果你想贡献spos，欢迎提交PR，谢谢！
 
 
 # 特别感谢

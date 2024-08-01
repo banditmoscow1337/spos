@@ -3,7 +3,7 @@ package clock
 import (
 	"time"
 
-	"github.com/icexin/eggos/kernel/sys"
+	"github.com/banditmoscow1337/spos/kernel/sys"
 )
 
 type CmosTime struct {

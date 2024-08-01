@@ -1,4 +1,4 @@
-module github.com/icexin/eggos/cmd
+module github.com/banditmoscow1337/spos/cmd
 
 go 1.16
 

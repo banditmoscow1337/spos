@@ -8,12 +8,12 @@ import (
 )
 
 type Config struct {
-	WorkDir      string
-	GoRoot       string
-	Basedir      string
-	BuildTest    bool
-	EggosVersion string
-	GoArgs       []string
+	WorkDir     string
+	GoRoot      string
+	Basedir     string
+	BuildTest   bool
+	SposVersion string
+	GoArgs      []string
 }
 
 type Builder struct {
@@ -29,7 +29,7 @@ func NewBuilder(cfg Config) *Builder {
 
 func (b *Builder) Build() error {
 	if b.cfg.Basedir == "" {
-		basedir, err := ioutil.TempDir("", "eggos-build")
+		basedir, err := ioutil.TempDir("", "spos-build")
 		if err != nil {
 			return err
 		}
@@ -63,7 +63,7 @@ func (b *Builder) fixGoTags() bool {
 			}
 			idx := i + 1
 			tags := args[idx]
-			tags += " eggos"
+			tags += " spos"
 			args[idx] = tags
 			return true
 		}
@@ -73,7 +73,7 @@ func (b *Builder) fixGoTags() bool {
 
 func (b *Builder) buildPkg() error {
 	var buildArgs []string
-	ldflags := "-E github.com/icexin/eggos/kernel.rt0 -T 0x100000"
+	ldflags := "-E github.com/banditmoscow1337/spos/kernel.rt0 -T 0x100000"
 	if !b.cfg.BuildTest {
 		buildArgs = append(buildArgs, "build")
 	} else {
@@ -81,7 +81,7 @@ func (b *Builder) buildPkg() error {
 	}
 	hasGoTags := b.fixGoTags()
 	if !hasGoTags {
-		buildArgs = append(buildArgs, "-tags", "eggos")
+		buildArgs = append(buildArgs, "-tags", "spos")
 	}
 	buildArgs = append(buildArgs, "-ldflags", ldflags)
 	buildArgs = append(buildArgs, "-overlay", b.overlayFile())

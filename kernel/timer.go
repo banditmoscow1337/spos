@@ -1,10 +1,10 @@
 package kernel
 
 import (
-	"github.com/icexin/eggos/drivers/pic"
-	"github.com/icexin/eggos/kernel/sys"
-	"github.com/icexin/eggos/kernel/trap"
-	"gvisor.dev/gvisor/pkg/abi/linux"
+	"github.com/banditmoscow1337/spos/drivers/pic"
+	"github.com/banditmoscow1337/spos/gvisor/linux"
+	"github.com/banditmoscow1337/spos/kernel/sys"
+	"github.com/banditmoscow1337/spos/kernel/trap"
 )
 
 const (
@@ -33,6 +33,7 @@ var (
 )
 
 // pitCounter return the current counter of 8259a
+//
 //go:nosplit
 func pitCounter() int32 {
 	const div = (_PIT_HZ / _HZ)

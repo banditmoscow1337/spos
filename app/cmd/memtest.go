@@ -6,7 +6,7 @@ import (
 	"math/rand"
 	"time"
 
-	"github.com/icexin/eggos/app"
+	"github.com/banditmoscow1337/spos/app"
 )
 
 func memtestmain(ctx *app.Context) error {

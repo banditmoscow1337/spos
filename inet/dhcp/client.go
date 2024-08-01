@@ -16,13 +16,13 @@ import (
 
 	"github.com/icexin/eggos/log"
 
-	"gvisor.dev/gvisor/pkg/tcpip"
-	"gvisor.dev/gvisor/pkg/tcpip/adapters/gonet"
-	nheader "gvisor.dev/gvisor/pkg/tcpip/header"
-	"gvisor.dev/gvisor/pkg/tcpip/network/ipv4"
-	"gvisor.dev/gvisor/pkg/tcpip/stack"
+	"github.com/icexin/eggos/gvisor/gonet"
+	"github.com/icexin/eggos/gvisor/stack"
+	"github.com/icexin/eggos/gvisor/tcpip"
+	nheader "github.com/icexin/eggos/gvisor/tcpip/header"
+	"github.com/icexin/eggos/gvisor/tcpip/network/ipv4"
+	"github.com/icexin/eggos/gvisor/waiter"
 	"gvisor.dev/gvisor/pkg/tcpip/transport/udp"
-	"gvisor.dev/gvisor/pkg/waiter"
 )
 
 // Client is a DHCP client.

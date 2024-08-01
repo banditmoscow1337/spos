@@ -3,7 +3,7 @@ package kernel
 import (
 	"unsafe"
 
-	"gvisor.dev/gvisor/pkg/abi/linux"
+	"github.com/banditmoscow1337/spos/gvisor/linux"
 )
 
 const (
@@ -63,6 +63,7 @@ func sleepon(lock *uintptr) {
 }
 
 // wakeup thread sleep on lock, n == -1 means all threads
+//
 //go:nosplit
 func wakeup(lock *uintptr, n int) {
 	limit := uint(n)

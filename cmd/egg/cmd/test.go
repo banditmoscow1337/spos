@@ -5,7 +5,7 @@ Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
 You may obtain a copy of the License at
 
-    http://www.apache.org/licenses/LICENSE-2.0
+	http://www.apache.org/licenses/LICENSE-2.0
 
 Unless required by applicable law or agreed to in writing, software
 distributed under the License is distributed on an "AS IS" BASIS,
@@ -21,7 +21,7 @@ import (
 	"os"
 	"path/filepath"
 
-	"github.com/icexin/eggos/cmd/egg/build"
+	"github.com/banditmoscow1337/spos/cmd/egg/build"
 	"github.com/spf13/cobra"
 )
 
@@ -38,7 +38,7 @@ var testCmd = &cobra.Command{
 }
 
 func runTest() error {
-	base, err := ioutil.TempDir("", "eggos-test")
+	base, err := ioutil.TempDir("", "spos-test")
 	if err != nil {
 		return err
 	}
@@ -47,10 +47,10 @@ func runTest() error {
 	outfile := filepath.Join(base, "kernel.test.elf")
 
 	b := build.NewBuilder(build.Config{
-		GoRoot:       goroot,
-		Basedir:      base,
-		BuildTest:    true,
-		EggosVersion: eggosVersion,
+		GoRoot:      goroot,
+		Basedir:     base,
+		BuildTest:   true,
+		SposVersion: sposVersion,
 		GoArgs: []string{
 			"-o", outfile,
 			"-vet=off",

@@ -4,8 +4,8 @@ import (
 	"fmt"
 	"time"
 
-	"github.com/icexin/eggos/app"
-	"github.com/icexin/eggos/drivers/clock"
+	"github.com/banditmoscow1337/spos/app"
+	"github.com/banditmoscow1337/spos/drivers/clock"
 )
 
 func datemain(ctx *app.Context) error {

@@ -4,16 +4,16 @@ import (
 	"syscall"
 	"unsafe"
 
-	"github.com/icexin/eggos/drivers/qemu"
-	"github.com/icexin/eggos/drivers/uart"
-	"github.com/icexin/eggos/kernel/isyscall"
-	"github.com/icexin/eggos/kernel/mm"
-	"github.com/icexin/eggos/kernel/sys"
-	"github.com/icexin/eggos/kernel/trap"
-	"github.com/icexin/eggos/log"
+	"github.com/banditmoscow1337/spos/drivers/qemu"
+	"github.com/banditmoscow1337/spos/drivers/uart"
+	"github.com/banditmoscow1337/spos/gvisor/linux"
+	"github.com/banditmoscow1337/spos/gvisor/linux/errno"
+	"github.com/banditmoscow1337/spos/kernel/isyscall"
+	"github.com/banditmoscow1337/spos/kernel/mm"
+	"github.com/banditmoscow1337/spos/kernel/sys"
+	"github.com/banditmoscow1337/spos/kernel/trap"
+	"github.com/banditmoscow1337/spos/log"
 	"golang.org/x/sys/unix"
-	"gvisor.dev/gvisor/pkg/abi/linux"
-	"gvisor.dev/gvisor/pkg/abi/linux/errno"
 )
 
 const (

@@ -1,10 +1,10 @@
 package kernel
 
 import (
-	"github.com/icexin/eggos/drivers/multiboot"
-	"github.com/icexin/eggos/drivers/pic"
-	"github.com/icexin/eggos/drivers/uart"
-	"github.com/icexin/eggos/kernel/mm"
+	"github.com/banditmoscow1337/spos/drivers/multiboot"
+	"github.com/banditmoscow1337/spos/drivers/pic"
+	"github.com/banditmoscow1337/spos/drivers/uart"
+	"github.com/banditmoscow1337/spos/kernel/mm"
 )
 
 //go:nosplit

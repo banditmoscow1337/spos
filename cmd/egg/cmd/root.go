@@ -5,7 +5,7 @@ Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
 You may obtain a copy of the License at
 
-    http://www.apache.org/licenses/LICENSE-2.0
+	http://www.apache.org/licenses/LICENSE-2.0
 
 Unless required by applicable law or agreed to in writing, software
 distributed under the License is distributed on an "AS IS" BASIS,
@@ -25,15 +25,15 @@ import (
 )
 
 var (
-	cfgFile      string
-	eggosVersion string
-	goroot       string
+	cfgFile     string
+	sposVersion string
+	goroot      string
 )
 
 // rootCmd represents the base command when called without any subcommands
 var rootCmd = &cobra.Command{
 	Use:   "egg",
-	Short: "command line tools for eggos",
+	Short: "command line tools for spos",
 }
 
 // Execute adds all child commands to the root command and sets flags appropriately.
@@ -53,7 +53,7 @@ func init() {
 	// will be global for your application.
 
 	rootCmd.PersistentFlags().StringVar(&cfgFile, "config", "", "config file (default is $HOME/.egg.yaml)")
-	rootCmd.PersistentFlags().StringVar(&eggosVersion, "eggos-version", "", "if eggos is missing in go.mod, the version of eggos expected to require")
+	rootCmd.PersistentFlags().StringVar(&sposVersion, "spos-version", "", "if spos is missing in go.mod, the version of spos expected to require")
 
 	// Cobra also supports local flags, which will only run
 	// when this action is called directly.
@@ -76,10 +76,10 @@ func initConfig() {
 			panic(err)
 		}
 
-		// Search config in home directory with name ".eggos" (without extension).
+		// Search config in home directory with name ".spos" (without extension).
 		viper.AddConfigPath(home)
 		viper.SetConfigType("yaml")
-		viper.SetConfigName(".eggos")
+		viper.SetConfigName(".spos")
 	}
 
 	viper.AutomaticEnv() // read in environment variables that match

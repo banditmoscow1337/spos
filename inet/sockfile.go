@@ -9,11 +9,9 @@ import (
 	"unsafe"
 
 	"github.com/icexin/eggos/fs"
+	"github.com/icexin/eggos/gvisor/tcpip"
+	"github.com/icexin/eggos/gvisor/waiter"
 	"github.com/icexin/eggos/log"
-
-	"gvisor.dev/gvisor/pkg/abi/linux"
-	"gvisor.dev/gvisor/pkg/tcpip"
-	"gvisor.dev/gvisor/pkg/waiter"
 )
 
 //go:linkname evnotify github.com/icexin/eggos/kernel.epollNotify
@@ -120,11 +118,11 @@ func (s *sockFile) evcallback(e *waiter.Entry, mask waiter.EventMask) {
 }
 
 func (s *sockFile) Bind(uaddr, uaddrlen uintptr) error {
-	var saddr *linux.SockAddrInet
+	var saddr *tcpip.SockAddrInet
 	if uaddrlen < unsafe.Sizeof(*saddr) {
 		return errors.New("bad bind address")
 	}
-	saddr = (*linux.SockAddrInet)(unsafe.Pointer(uaddr))
+	saddr = (*tcpip.SockAddrInet)(unsafe.Pointer(uaddr))
 	ip := net.IPv4(saddr.Addr[0], saddr.Addr[1], saddr.Addr[2], saddr.Addr[3])
 	addr := tcpip.FullAddress{
 		// NIC:  defaultNIC,
@@ -140,11 +138,11 @@ func (s *sockFile) Bind(uaddr, uaddrlen uintptr) error {
 }
 
 func (s *sockFile) Connect(uaddr, uaddrlen uintptr) error {
-	var saddr *linux.SockAddrInet
+	var saddr *tcpip.SockAddrInet
 	if uaddrlen < unsafe.Sizeof(*saddr) {
 		return syscall.EINVAL
 	}
-	saddr = (*linux.SockAddrInet)(unsafe.Pointer(uaddr))
+	saddr = (*tcpip.SockAddrInet)(unsafe.Pointer(uaddr))
 	addr := tcpip.FullAddress{
 		Addr: tcpip.Address(saddr.Addr[:]),
 		Port: ntohs(saddr.Port),
@@ -169,11 +167,11 @@ func (s *sockFile) Listen(n uintptr) error {
 }
 
 func (s *sockFile) Accept4(uaddr, uaddrlen, flag uintptr) (int, error) {
-	var saddr *linux.SockAddrInet
+	var saddr *tcpip.SockAddrInet
 	if uaddrlen < unsafe.Sizeof(*saddr) {
 		return 0, syscall.EINVAL
 	}
-	saddr = (*linux.SockAddrInet)(unsafe.Pointer(uaddr))
+	saddr = (*tcpip.SockAddrInet)(unsafe.Pointer(uaddr))
 	newep, wq, err := s.ep.Accept(nil)
 	switch err.(type) {
 	case nil:
@@ -272,7 +270,7 @@ func (s *sockFile) Getsockopt(level, opt, vptr, vlenptr uintptr) error {
 }
 
 func (s *sockFile) Getpeername(uaddr, uaddrlen uintptr) error {
-	saddr := (*linux.SockAddrInet)(unsafe.Pointer(uaddr))
+	saddr := (*tcpip.SockAddrInet)(unsafe.Pointer(uaddr))
 	addr, err := s.ep.GetRemoteAddress()
 	if err != nil {
 		log.Infof("[socket] getpeername error:%s", err)
@@ -285,7 +283,7 @@ func (s *sockFile) Getpeername(uaddr, uaddrlen uintptr) error {
 }
 
 func (s *sockFile) Getsockname(uaddr, uaddrlen uintptr) error {
-	saddr := (*linux.SockAddrInet)(unsafe.Pointer(uaddr))
+	saddr := (*tcpip.SockAddrInet)(unsafe.Pointer(uaddr))
 	addr, err := s.ep.GetLocalAddress()
 	if err != nil {
 		log.Infof("[socket] getsockname error:%s", err)
